@@ -13,6 +13,7 @@
 
 
 @for($i=0;isset($fornecedores[$i]);$i++)
+    @{{$fornecedores[$i]['nome']}} Escapear <br/>
     Fornecedor: {{$fornecedores[$i]['nome']}}
     <br/>
     Status: {{$fornecedores[$i]['status']}}
@@ -56,6 +57,8 @@
 <br/>
 <br/>
 @forelse($fornecedores as $indice => $fornecedor)
+    <br/>
+    Iteração atual: {{$loop->iteration}} <br/>
     Fornecedor: {{$fornecedor['nome']}}
     <br/>
     Status: {{$fornecedor['status']}}
@@ -64,6 +67,13 @@
     <br/>
     @if ($fornecedor['status'] == 'N')
         Fornecedor inativo
+    @endif
+    @if($loop->first)
+        Primeira iteração
+    @endif
+    @if($loop->last)
+        Última iteração
+        Total de registros: {{$loop->count}}
     @endif
 @empty
     Não existem fornecedores cadastrados

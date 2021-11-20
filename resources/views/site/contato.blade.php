@@ -1,14 +1,17 @@
-<h3>Contato</h3>
-<ul>
-    <li>
-        <a href="{{route('site.index')}}">Principal</a>
-    </li>
-    <li>
-        <a href="{{route('site.sobrenos')}}">Sobre nós</a>
-    </li>
-    <li>
-        <a href="{{route('site.contato')}}">
-            Contato
-        </a>
-    </li>
-</ul>
+@extends('site.layouts.basico')
+@section('titulo', $titulo)
+@section('conteudo')
+
+    <div class="conteudo-pagina">
+        <div class="titulo-pagina">
+            <h1>Entre em contato conosco</h1>
+        </div>
+
+        <div class="informacao-pagina">
+            <div class="contato-principal">
+                @component('site.layouts._components.form_contato', ['classe'=>'borda-preta'])
+                @endcomponent
+            </div>
+        </div>
+    </div>
+@endsection
