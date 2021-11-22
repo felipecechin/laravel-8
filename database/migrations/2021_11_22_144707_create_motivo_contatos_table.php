@@ -4,18 +4,17 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFornecedoresTable extends Migration {
+class CreateMotivoContatosTable extends Migration {
     /**
      * Run the migrations.
      *
      * @return void
      */
     public function up() {
-        Schema::create('fornecedores', function (Blueprint $table) {
+        Schema::create('motivo_contatos', function (Blueprint $table) {
             $table->id();
-            $table->string('nome', 50);
+            $table->string('motivo_contato', 20);
             $table->timestamps();
-            //$table->softDeletes();
         });
     }
 
@@ -25,6 +24,6 @@ class CreateFornecedoresTable extends Migration {
      * @return void
      */
     public function down() {
-        Schema::dropIfExists('fornecedores');
+        Schema::dropIfExists('motivo_contatos');
     }
 }
