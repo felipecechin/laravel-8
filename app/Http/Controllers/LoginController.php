@@ -30,8 +30,6 @@ class LoginController extends Controller {
         $email = $request->get('usuario');
         $password = $request->get('senha');
 
-        echo $email;
-
         $user = new User();
 
         $usuario = $user->where('email', $email)->where('password', $password)->get()->first();
