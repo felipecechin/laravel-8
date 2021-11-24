@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\ProdutoDetalheController;
 use App\Http\Controllers\SobreNosController;
 use App\Http\Controllers\TesteController;
 use App\Http\Middleware\LogAcessoMiddleware;
@@ -54,7 +55,9 @@ Route::middleware('autenticacao:padrao,visitante')->prefix('/app')->group(functi
     Route::get('/fornecedor/editar/{id}/{msg?}', [FornecedorController::class, 'editar'])->name('app.fornecedor.editar');
     Route::get('/fornecedor/excluir/{id}', [FornecedorController::class, 'excluir'])->name('app.fornecedor.excluir');
 
-    Route::get('/produto', [ProdutoController::class, 'index'])->name('app.produto');
+    Route::resource('produto', ProdutoController::class);
+
+    Route::resource('produto-detalhe', ProdutoDetalheController::class);
 });
 
 Route::get('/rota1', function () {

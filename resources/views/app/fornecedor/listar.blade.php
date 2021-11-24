@@ -54,6 +54,9 @@
                 @if($fornecedores->lastPage()!=$fornecedores->currentPage())
                     <a href="{{$fornecedores->nextPageUrl()}}">Próximo ></a>
                 @endif
+                <br/>
+                Exibindo {{ $fornecedores->count() }} produtos de {{ $fornecedores->total() }}
+                (de {{ $fornecedores->firstItem() }} a {{ $fornecedores->lastItem() }})
             </div>
 
         </div>
