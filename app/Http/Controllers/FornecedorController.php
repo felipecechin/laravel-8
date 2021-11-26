@@ -12,11 +12,11 @@ class FornecedorController extends Controller {
     }
 
     public function listar(Request $request) {
-        $fornecedores = Fornecedor::where('nome', 'like', '%' . $request->get('nome') . '%')
+        $fornecedores = Fornecedor::with(['produtos'])->where('nome', 'like', '%' . $request->get('nome') . '%')
             ->where('site', 'like', '%' . $request->get('site') . '%')
             ->where('uf', 'like', '%' . $request->get('uf') . '%')
             ->where('email', 'like', '%' . $request->get('email') . '%')
-            ->paginate(2);
+            ->paginate(5);
 
         $fornecedores->appends($request->all());
 
