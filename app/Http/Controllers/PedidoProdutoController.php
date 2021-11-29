@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pedido;
+use App\Models\PedidoProduto;
 use App\Models\Produto;
 use Illuminate\Http\Request;
 
@@ -112,7 +113,7 @@ class PedidoProdutoController extends Controller {
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pedido $pedido, Produto $produto) {
+    public function destroy(PedidoProduto $pedidoProduto) {
         //convencional
         /*
         PedidoProduto::where([
@@ -122,8 +123,11 @@ class PedidoProdutoController extends Controller {
         */
 
         //detach (delete pelo relacionamento)
-        $pedido->produtos()->detach($produto->id);
+        //        $pedido->produtos()->detach($produto->id);
         //produto_id
+
+        $pedido = $pedidoProduto->pedido;
+        $pedidoProduto->delete();
 
         return redirect()->route('pedido-produto.create', ['pedido' => $pedido->id]);
     }
